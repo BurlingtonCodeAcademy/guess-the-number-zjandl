@@ -13,7 +13,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 async function secondGuess() {
-  let tryAgain = await ask("Higher or Lower or Correct?  ");
+  let tryAgain = await ask("Higher or Lower?  ");
   if (tryAgain.toLowerCase() === "lower") {
     await ask("How about " + getRandomIntInclusive(min, max) + "? ");
   } else if (tryAgain.toLowerCase() === "higher") {
@@ -49,7 +49,7 @@ async function start() {
 
   let firstGuess = await ask("Are you thinking of the number..." + computerGuess + "? \nYes or No? ");
   while (firstGuess === "no") {
-    let tryAgain = await ask("Higher or Lower or Correct?  ");
+    let tryAgain = await ask("Higher or Lower?  ");
     if (tryAgain.toLowerCase() === "lower") {
       max = (computerGuess - 1)
     } else if (tryAgain.toLowerCase() === "higher") {
@@ -57,7 +57,7 @@ async function start() {
     }
 
     computerGuess = getRandomIntInclusive(min, max)
-    firstGuess = await ask("How about " + computerGuess + "? Yes on No ");
+    firstGuess = await ask("How about " + computerGuess + "?\nYes on No ");
 if (firstGuess === "yes"){
   console.log("I'm so smart!")
   process.exit()
