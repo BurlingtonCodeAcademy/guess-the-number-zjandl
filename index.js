@@ -44,7 +44,7 @@ async function start() {
   let min = 1
   let max = 100
   let computerGuess = getRandomIntInclusive(min, max)
-
+  let guessCounter= 1
   // guessNum()
 
   let firstGuess = await ask("Are you thinking of the number..." + computerGuess + "? \nYes or No? ");
@@ -58,8 +58,9 @@ async function start() {
 
     computerGuess = getRandomIntInclusive(min, max)
     firstGuess = await ask("How about " + computerGuess + "?\nYes on No ");
+    guessCounter++ 
 if (firstGuess === "yes"){
-  console.log("I'm so smart!")
+  console.log("I'm so smart! I guessed it in " + guessCounter + " guesses!")
   process.exit()
 }
   }
