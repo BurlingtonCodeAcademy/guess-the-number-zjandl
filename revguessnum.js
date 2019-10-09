@@ -1,11 +1,18 @@
-console.log ("I'm thinking of a number between 1 and 100\nTake a guess!");
-process.stdin.on ('data', (chunk) => {
-    let number = chunk;
-    if (number > 20) {
-        console.log("Sorry! The number I'm thinking of is lower than " + number);
-    } else if (number < 20) {
-            console.log("Sorry! The number I'm thinking of is higher than " + number);
-        } else {
-    console.log ("Correct! How'd you know?");} 
-    
-});
+const readline = require('readline');
+const rl = readline.createInterface(process.stdin, process.stdout);
+
+function ask(questionText) {
+  return new Promise((resolve, reject) => {
+    rl.question(questionText, resolve);
+  });
+}
+
+start();
+
+async function start() {
+  console.log("Let's play a game where you (human) make up a number and I (computer) try to guess it.")
+  let secretNumber = await ask("What is your secret number?\nI won't peek, I promise...\n");
+  console.log('You entered: ' + secretNumber);
+  // Now try and complete the program.
+  process.exit();
+}
